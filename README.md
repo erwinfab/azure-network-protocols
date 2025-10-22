@@ -33,7 +33,19 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <h2>Actions and Observations</h2>
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
+<img width="548" height="170" alt="image" src="https://github.com/user-attachments/assets/b7e2593d-b544-4c4d-9693-6cd3e827c887" />
+<h2></h2>
+<img width="469" height="325" alt="image" src="https://github.com/user-attachments/assets/e263214a-8e4e-424d-8643-6cca5e4309b5" /> <img width="464" height="198" alt="image" src="https://github.com/user-attachments/assets/4a2e7a67-b2ca-4e50-9906-1b69209e4a31" />
+<img width="462" height="32" alt="image" src="https://github.com/user-attachments/assets/704182cc-0767-4445-a86a-f7e04b834f74" />
+<h2></h2>
+<img width="465" height="291" alt="image" src="https://github.com/user-attachments/assets/c25366be-88c7-4728-80b1-f43cda65c8d9" /> <img width="464" height="140" alt="image" src="https://github.com/user-attachments/assets/51ae8992-e4d3-4e99-a88c-1b726ac7833a" />
+
+<img width="463" height="31" alt="image" src="https://github.com/user-attachments/assets/290c21a0-c2ab-4b4e-a052-4189fc72cc7c" /> 
+
+
+
+
 </p>
 <p>
 <h2>Step 1: Create Azure VM Environment</h2>
@@ -42,16 +54,35 @@ First, in the Azure portal, create a new Resource Group. Deploy a Windows 10 VM 
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="302" height="233" alt="image" src="https://github.com/user-attachments/assets/56a7f88b-0345-4769-89b4-cfc9323213ad" />
+<h2></h2>
+<img width="316" height="178" alt="image" src="https://github.com/user-attachments/assets/ece01822-5a2e-430d-824d-41502f4226c3" /> <img width="429" height="95" alt="image" src="https://github.com/user-attachments/assets/8cdc5ac7-4691-42ba-8e4e-0a95a69d6e3d" />
+<h2></h2>
+<img width="492" height="336" alt="image" src="https://github.com/user-attachments/assets/768ca6f5-f61a-4067-9e9c-73cbb6bce9b0" /><img width="836" height="221" alt="image" src="https://github.com/user-attachments/assets/546a698d-d14e-4dbf-9e6f-b526e1678036" />
+<h2></h2>
+
+
+
 </p>
 <p>
 <h2>Step 2: Observe ICMP Traffic</h2>
-Use Remote Desktop to connect to your Windows 10 VM. Inside the VM, install and open Wireshark , start a packet capture, and set the display filter to icmp . Open the command line and ping the private IP address of your Ubuntu VM; observe the ping requests and replies in Wireshark . After that, ping a public website like www.google.com to observe the ICMP traffic leaving your VNet.
+Use Remote Desktop to connect to your Windows 10 VM (Public IP-Address). Inside the VM, install and open Wireshark (Protocol Analyzer) , start a packet capture, and set the display filter to icmp . Open the command line and ping the private IP address(Ex. 10.0.0.5) of your Ubuntu VM; observe the ping requests and replies in Wireshark . 
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="460" height="452" alt="image" src="https://github.com/user-attachments/assets/45ae3c58-961d-4002-a96d-fa215244f77a" />
+<h2></h2>
+<img width="390" height="87" alt="image" src="https://github.com/user-attachments/assets/0d123d95-17b0-4464-aa29-bdd5a446ccd4" />
+<img width="713" height="46" alt="image" src="https://github.com/user-attachments/assets/bd7c92b2-d60d-49d6-84ee-6b964fc2ec55" />
+<h2></h2>
+<img width="364" height="154" alt="image" src="https://github.com/user-attachments/assets/09b0bb61-5a56-4e67-99fb-8108222c0152" /> <img width="411" height="153" alt="image" src="https://github.com/user-attachments/assets/dfa06b02-da53-4a81-8c41-174fa8788aaa" />
+<h2></h2>
+<img width="310" height="70" alt="image" src="https://github.com/user-attachments/assets/f4fa5a06-76f5-4244-bc51-6802779f36d3" /> <img width="364" height="177" alt="image" src="https://github.com/user-attachments/assets/24fbf311-f0cb-49f5-973d-a65b52827a23" /> <img width="387" height="102" alt="image" src="https://github.com/user-attachments/assets/f3e4d5b1-cd74-4014-b4bb-0246f383d1a0" />
+
+
+
+
 </p>
 <p>
 <h2>Step 3: Configure Network Security Group (Firewall)</h2>
@@ -60,7 +91,10 @@ In the Windows VM's command line, start a continuous ping to the Ubuntu VM (e.g.
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="420" height="95" alt="image" src="https://github.com/user-attachments/assets/069f1d96-8bce-4088-8c07-ba0c64673406" /> <img width="621" height="119" alt="image" src="https://github.com/user-attachments/assets/9a3c63ed-442e-43f4-93c8-b3e63ebca88e" /> <img width="509" height="196" alt="image" src="https://github.com/user-attachments/assets/7bd6a7f7-159b-43e6-bc3b-e5bf22f8d36f" />
+<img width="604" height="261" alt="image" src="https://github.com/user-attachments/assets/f2421b2e-9a15-4473-85ed-3563fc193d48" />
+<h2></h2>
+
 </p>
 <p>
 <h2>Step 4: Inspect Other Network Protocols</h2>
