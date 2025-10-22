@@ -94,19 +94,29 @@ In the Windows VM's command line, start a continuous ping to the Ubuntu VM (e.g.
 <img width="420" height="95" alt="image" src="https://github.com/user-attachments/assets/069f1d96-8bce-4088-8c07-ba0c64673406" /> <img width="621" height="119" alt="image" src="https://github.com/user-attachments/assets/9a3c63ed-442e-43f4-93c8-b3e63ebca88e" /> <img width="509" height="196" alt="image" src="https://github.com/user-attachments/assets/7bd6a7f7-159b-43e6-bc3b-e5bf22f8d36f" />
 <img width="604" height="261" alt="image" src="https://github.com/user-attachments/assets/f2421b2e-9a15-4473-85ed-3563fc193d48" />
 <h2></h2>
+<img width="421" height="131" alt="image" src="https://github.com/user-attachments/assets/fc049868-7386-4025-b5f3-e499b60be223" /> <img width="220" height="60" alt="image" src="https://github.com/user-attachments/assets/b6077093-f217-48d2-a58e-5cf8214907e5" />
+<h2></h2>
+<img width="521" height="368" alt="image" src="https://github.com/user-attachments/assets/5736ddf3-eaf6-447a-bff8-577fa02a87af" />
+<img width="753" height="166" alt="image" src="https://github.com/user-attachments/assets/6f954ace-1051-4159-a8a4-2ad264c906ba" />
+<h2></h2>
+
+<img width="335" height="99" alt="image" src="https://github.com/user-attachments/assets/95446f6e-6251-41a5-92e3-55c27b5f5d0d" /> <img width="316" height="164" alt="image" src="https://github.com/user-attachments/assets/af38c733-dc8a-4a7a-95b7-4906f6163e1c" />
+<img width="967" height="481" alt="image" src="https://github.com/user-attachments/assets/6c790ae9-571a-4925-b882-cb33af738d3b" />
+
 
 </p>
 <p>
 <h2>Step 4: Inspect Other Network Protocols</h2>
-In Wireshark, change the filter to ssh. From the Windows VM's PowerShell, SSH into your Ubuntu VM (ssh labuser@<private_IP>) . Type a few commands and observe the stream of encrypted SSH traffic in Wireshark. Next, change the Wireshark filter to dhcp. Open an admin PowerShell and run ipconfig /renew to observe the DHCP request/acknowledgment process . After that, filter for dns and use the nslookup google.com command to see the DNS query and response .
+In Wireshark, change the filter to ssh. From the Windows VM's PowerShell, SSH into your Ubuntu VM (ssh labuser@<private_IP>) . Type a few commands and observe the stream of encrypted SSH traffic in Wireshark. Next, change the Wireshark filter to dhcp. Open an admin PowerShell and run ipconfig /renew to observe the DHCP request/acknowledgment process . After that, filter for dns and use the nslookup disney.com command to see the DNS query and response .
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="962" height="463" alt="image" src="https://github.com/user-attachments/assets/1ccc4df8-23fb-45cc-9d22-0a8e2c33ccd6" />
+
 </p>
 <p>
-<h2>Step 5: Observe RDP Traffic and Clean Up</h2>
-Finally, change the Wireshark filter to tcp.port == 3389 to see RDP traffic. You will observe a non-stop, high-volume spam of traffic; this is because RDP is a constant live-streaming protocol, unlike the other "on-demand" protocols you tested . When finished, close your Remote Desktop connection and delete the entire Resource Group from the Azure portal to remove all created resources and avoid further charges.
+<h2>Step 5: Observe RDP Traffic</h2>
+Finally, change the Wireshark filter to tcp.port == 3389 to see RDP traffic. You will observe a non-stop, high-volume spam of traffic; this is because RDP is a constant live-streaming protocol, unlike the other "on-demand" protocols you tested .
 </p>
 <br />
