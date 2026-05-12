@@ -26,7 +26,9 @@ In this lab, I architected a secure cloud network environment in **Microsoft Azu
 
 I began by creating a Resource Group and deploying two virtual machines—one Windows 10 and one Ubuntu Linux—onto the same Virtual Network (VNet). This shared network architecture is essential for simulating internal traffic between different operating systems.
 
+<img width="511" height="354" alt="image" src="https://github.com/user-attachments/assets/58e74b38-0b1e-4d0a-9e51-f84abaf8e617" />
 
+<img width="507" height="315" alt="image" src="https://github.com/user-attachments/assets/2515e4ff-77ea-42d3-9b7a-2cfaa9c9af6e" />
 
 
 
