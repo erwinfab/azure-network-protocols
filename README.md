@@ -1,36 +1,43 @@
 <p align="center">
 <img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
-</p>
 
-<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
-In this tutorial, we observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
+# Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines
+*In this tutorial, we observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups.*
+
+### Executive Summary
+In this lab, I architected a secure cloud network environment in **Microsoft Azure** consisting of a Windows 10 workstation and an Ubuntu Linux server. I performed deep packet inspection using **Wireshark** to analyze various network protocols (ICMP, SSH, DNS, DHCP, RDP) and implemented firewall rules via **Network Security Groups** to control traffic flow. This project highlights my ability to perform real-time traffic troubleshooting and enforce security policies at the network level.
+
+
+### Environments and Technologies Used
+
+- **Microsoft Azure** *(Virtual Machines, Virtual Networks, NSGs)*
+- **Remote Desktop (RDP)**
+- **Various Command-Line Tools** *(Ping, SSH, NSLookup, IPConfig)*
+- **Various Network Protocols** *(SSH, RDH, DNS, HTTP/S, ICMP)*
+- **Wireshark** *(Protocol Analyzer)*
+
+### Operating Systems Used
+- **Windows 10** *(21H2)*
+- **Ubuntu Server 20.04**
+
+## Actions and Observations
+
+**Step 1**: **Resource Provisioning**
+
+I began by creating a Resource Group and deploying two virtual machines—one Windows 10 and one Ubuntu Linux—onto the same Virtual Network (VNet). This shared network architecture is essential for simulating internal traffic between different operating systems.
 
 
 
 
-<h2>Environments and Technologies Used</h2>
 
-- Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
-- Various Command-Line Tools
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
-- Wireshark (Protocol Analyzer)
 
-<h2>Operating Systems Used </h2>
 
-- Windows 10 (21H2)
-- Ubuntu Server 20.04
 
-<h2>High-Level Steps</h2>
 
-- Step 1: Create an Azure environment with a Windows 10 and an Ubuntu VM in the same Virtual Network .
-- Step 2: Use Wireshark to capture and observe ICMP (ping) traffic between the two VMs and to the public internet .
-- Step 3: Configure the Network Security Group (NSG) to create a firewall rule that blocks ICMP traffic, and then re-enable it .
-- Step 4: Inspect various network protocols (SSH, DHCP, DNS, and RDP) in Wireshark to observe their unique behaviors .
 
-<h2>Actions and Observations</h2>
 
-<p>
+
+
 
 <img width="548" height="170" alt="image" src="https://github.com/user-attachments/assets/b7e2593d-b544-4c4d-9693-6cd3e827c887" />
 <h2></h2>
@@ -44,12 +51,10 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 
 
-</p>
-<p>
+
 <h2>Step 1: Create Azure VM Environment</h2>
 First, in the Azure portal, create a new Resource Group. Deploy a Windows 10 VM within that new Resource Group, allowing it to create a new Virtual Network (VNet) . Next, create a Linux (Ubuntu) VM, making sure to select the same Resource Group and the same VNet you just created so that both VMs can communicate on the same private network .
-</p>
-<br />
+
 
 <p>
 <img width="302" height="233" alt="image" src="https://github.com/user-attachments/assets/56a7f88b-0345-4769-89b4-cfc9323213ad" />
