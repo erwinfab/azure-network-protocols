@@ -41,12 +41,7 @@ I began by creating a Resource Group and deploying two virtual machines—one Wi
 
 
 
-<img width="548" height="170" alt="image" src="https://github.com/user-attachments/assets/b7e2593d-b544-4c4d-9693-6cd3e827c887" />
-<h2></h2>
-<img width="469" height="325" alt="image" src="https://github.com/user-attachments/assets/e263214a-8e4e-424d-8643-6cca5e4309b5" /> <img width="464" height="198" alt="image" src="https://github.com/user-attachments/assets/4a2e7a67-b2ca-4e50-9906-1b69209e4a31" />
-<img width="462" height="32" alt="image" src="https://github.com/user-attachments/assets/704182cc-0767-4445-a86a-f7e04b834f74" />
-<h2></h2>
-<img width="465" height="291" alt="image" src="https://github.com/user-attachments/assets/c25366be-88c7-4728-80b1-f43cda65c8d9" /> <img width="464" height="140" alt="image" src="https://github.com/user-attachments/assets/51ae8992-e4d3-4e99-a88c-1b726ac7833a" />
+
 
 <img width="463" height="31" alt="image" src="https://github.com/user-attachments/assets/290c21a0-c2ab-4b4e-a052-4189fc72cc7c" /> 
 
