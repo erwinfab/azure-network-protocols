@@ -29,6 +29,15 @@ I began by creating a Resource Group and deploying two virtual machines—one Wi
 <img width="511" height="354" alt="image" src="https://github.com/user-attachments/assets/58e74b38-0b1e-4d0a-9e51-f84abaf8e617" />
 
 <img width="507" height="315" alt="image" src="https://github.com/user-attachments/assets/2515e4ff-77ea-42d3-9b7a-2cfaa9c9af6e" />
+<img width="574" height="37" alt="image" src="https://github.com/user-attachments/assets/6df6487a-0da4-4e49-b44a-a205807fcbab" />
+
+
+
+
+
+
+Step 2: Observing ICMP (Ping) Traffic
+After installing Wireshark on the Windows VM, I initiated a connectivity test by pinging the Ubuntu VM's private IP address. By applying an ICMP display filter, I was able to observe the live "Echo Request" and "Echo Reply" packets, confirming successful communication across the subnet.
 
 
 
@@ -43,7 +52,6 @@ I began by creating a Resource Group and deploying two virtual machines—one Wi
 
 
 
-<img width="463" height="31" alt="image" src="https://github.com/user-attachments/assets/290c21a0-c2ab-4b4e-a052-4189fc72cc7c" /> 
 
 
 
