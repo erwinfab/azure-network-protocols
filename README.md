@@ -18,66 +18,54 @@ In this lab, I architected a secure cloud network environment in **Microsoft Azu
 
 ### Operating Systems Used
 - **Windows 10** *(21H2)*
-- **Ubuntu Server 20.04**
+- **Ubuntu Server 20.04 LTS**
 
 ## Actions and Observations
 
-**Step 1**: **Resource Provisioning**
+**Step 1**: **Create Azure VM Environment**
+I created a new **Resource Group** and deployed a Windows 10 VM, allowing it to create a new **Virtual Network (VNet)**. Next, I created an Ubuntu Linux VM, ensuring it was placed in the same Resource Group and VNet so both machines could communicate on the same private network.
 
-I began by creating a Resource Group and deploying two virtual machines—one Windows 10 and one Ubuntu Linux—onto the same Virtual Network (VNet). This shared network architecture is essential for simulating internal traffic between different operating systems.
+---
+
+**Step 2**: **Observe ICMP Traffic**
+I used Remote Desktop to connect to the Windows 10 VM via its public IP address. Inside the VM, I installed and opened **Wireshark**, started a packet capture, and set the display filter to **icmp**. I then opened the command line and pinged the private IP address of the Ubuntu VM, observing the live ping requests and replies in Wireshark.
+
+**Step 3**: **Configure Network Security Group (Firewall)**
+I started a continuous ping `(ping -t`) from the Windows VM to the Ubuntu VM. In the Azure portal, I located the **Network Security Group (NSG)** for the Ubuntu VM and added an inbound security rule to Deny all ICMP traffic. I observed in both the command line and Wireshark that the pings immediately began to fail with "Request timed out". After deleting the deny rule, the ping packets immediately began succeeding again.
+
+---
+
+**Step 4**: **Inspect Other Network Protocols**
+
+I used Wireshark filters to observe the unique behaviors of several other protocols:
+
+* SSH: Filtered for ssh while logging into the Ubuntu VM from the Windows command line (`ssh labuser@private_ip`) to observe encrypted traffic.
+
+* DHCP: Filtered for dhcp and ran `ipconfig /renew` in an admin PowerShell to observe the DHCP request and acknowledgment process.
+
+* DNS: Filtered for dns and used `nslookup google.com` to see the specific DNS query and response packets.
+
+---
+
+**Step 5**: **Observe RDP Traffic**
+
+Finally, I set the Wireshark filter to **tcp.port == 3389** to inspect **RDP traffic**. I observed a non-stop, high-volume stream of traffic; this is because RDP acts as a constant live-stream between computers, unlike the other "on-demand" protocols tested.
+
+
+
+
+
+
+
+
+
+
+
+
 
 <img width="511" height="354" alt="image" src="https://github.com/user-attachments/assets/58e74b38-0b1e-4d0a-9e51-f84abaf8e617" />
-
 <img width="507" height="315" alt="image" src="https://github.com/user-attachments/assets/2515e4ff-77ea-42d3-9b7a-2cfaa9c9af6e" />
 <img width="574" height="37" alt="image" src="https://github.com/user-attachments/assets/6df6487a-0da4-4e49-b44a-a205807fcbab" />
-
-
-
-
-
-
-Step 2: Observing ICMP (Ping) Traffic
-After installing Wireshark on the Windows VM, I initiated a connectivity test by pinging the Ubuntu VM's private IP address. By applying an ICMP display filter, I was able to observe the live "Echo Request" and "Echo Reply" packets, confirming successful communication across the subnet.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>Step 1: Create Azure VM Environment</h2>
-First, in the Azure portal, create a new Resource Group. Deploy a Windows 10 VM within that new Resource Group, allowing it to create a new Virtual Network (VNet) . Next, create a Linux (Ubuntu) VM, making sure to select the same Resource Group and the same VNet you just created so that both VMs can communicate on the same private network .
-
-
-<p>
-<img width="302" height="233" alt="image" src="https://github.com/user-attachments/assets/56a7f88b-0345-4769-89b4-cfc9323213ad" />
-<h2></h2>
-<img width="316" height="178" alt="image" src="https://github.com/user-attachments/assets/ece01822-5a2e-430d-824d-41502f4226c3" /> <img width="429" height="95" alt="image" src="https://github.com/user-attachments/assets/8cdc5ac7-4691-42ba-8e4e-0a95a69d6e3d" />
-<h2></h2>
-<img width="492" height="336" alt="image" src="https://github.com/user-attachments/assets/768ca6f5-f61a-4067-9e9c-73cbb6bce9b0" /><img width="836" height="221" alt="image" src="https://github.com/user-attachments/assets/546a698d-d14e-4dbf-9e6f-b526e1678036" />
-<h2></h2>
-
-
-
-</p>
-<p>
-<h2>Step 2: Observe ICMP Traffic</h2>
-Use Remote Desktop to connect to your Windows 10 VM (Public IP-Address). Inside the VM, install and open Wireshark (Protocol Analyzer) , start a packet capture, and set the display filter to icmp . Open the command line and ping the private IP address(Ex. 10.0.0.5) of your Ubuntu VM; observe the ping requests and replies in Wireshark . 
-</p>
-<br />
-
 <p>
 <img width="460" height="452" alt="image" src="https://github.com/user-attachments/assets/45ae3c58-961d-4002-a96d-fa215244f77a" />
 <h2></h2>
@@ -87,17 +75,7 @@ Use Remote Desktop to connect to your Windows 10 VM (Public IP-Address). Inside 
 <img width="364" height="154" alt="image" src="https://github.com/user-attachments/assets/09b0bb61-5a56-4e67-99fb-8108222c0152" /> <img width="411" height="153" alt="image" src="https://github.com/user-attachments/assets/dfa06b02-da53-4a81-8c41-174fa8788aaa" />
 <h2></h2>
 <img width="310" height="70" alt="image" src="https://github.com/user-attachments/assets/f4fa5a06-76f5-4244-bc51-6802779f36d3" /> <img width="364" height="177" alt="image" src="https://github.com/user-attachments/assets/24fbf311-f0cb-49f5-973d-a65b52827a23" /> <img width="387" height="102" alt="image" src="https://github.com/user-attachments/assets/f3e4d5b1-cd74-4014-b4bb-0246f383d1a0" />
-
-
-
-
 </p>
-<p>
-<h2>Step 3: Configure Network Security Group (Firewall)</h2>
-In the Windows VM's command line, start a continuous ping to the Ubuntu VM (e.g., ping -t <Ubuntu_IP>). Go back to the Azure portal and find the Network Security Group (NSG) associated with your Ubuntu VM. Add a new inbound security rule to deny all ICMP traffic. Switch back to your Windows VM and observe in both the command line and Wireshark that the pings are now failing. To finish, delete the "deny" rule from the NSG ; you will see the ping packets immediately start succeeding again.
-</p>
-<br />
-
 <p>
 <img width="420" height="95" alt="image" src="https://github.com/user-attachments/assets/069f1d96-8bce-4088-8c07-ba0c64673406" /> <img width="621" height="119" alt="image" src="https://github.com/user-attachments/assets/9a3c63ed-442e-43f4-93c8-b3e63ebca88e" /> <img width="509" height="196" alt="image" src="https://github.com/user-attachments/assets/7bd6a7f7-159b-43e6-bc3b-e5bf22f8d36f" />
 <img width="604" height="261" alt="image" src="https://github.com/user-attachments/assets/f2421b2e-9a15-4473-85ed-3563fc193d48" />
@@ -107,24 +85,7 @@ In the Windows VM's command line, start a continuous ping to the Ubuntu VM (e.g.
 <img width="521" height="368" alt="image" src="https://github.com/user-attachments/assets/5736ddf3-eaf6-447a-bff8-577fa02a87af" />
 <img width="753" height="166" alt="image" src="https://github.com/user-attachments/assets/6f954ace-1051-4159-a8a4-2ad264c906ba" />
 <h2></h2>
-
 <img width="335" height="99" alt="image" src="https://github.com/user-attachments/assets/95446f6e-6251-41a5-92e3-55c27b5f5d0d" /> <img width="316" height="164" alt="image" src="https://github.com/user-attachments/assets/af38c733-dc8a-4a7a-95b7-4906f6163e1c" />
 <img width="967" height="481" alt="image" src="https://github.com/user-attachments/assets/6c790ae9-571a-4925-b882-cb33af738d3b" />
-
-
-</p>
-<p>
-<h2>Step 4: Inspect Other Network Protocols</h2>
-In Wireshark, change the filter to ssh. From the Windows VM's PowerShell, SSH into your Ubuntu VM (ssh labuser@<private_IP>) . Type a few commands and observe the stream of encrypted SSH traffic in Wireshark. Next, change the Wireshark filter to dhcp. Open an admin PowerShell and run ipconfig /renew to observe the DHCP request/acknowledgment process . After that, filter for dns and use the nslookup disney.com command to see the DNS query and response .
-</p>
-<br />
-
 <p>
 <img width="962" height="463" alt="image" src="https://github.com/user-attachments/assets/1ccc4df8-23fb-45cc-9d22-0a8e2c33ccd6" />
-
-</p>
-<p>
-<h2>Step 5: Observe RDP Traffic</h2>
-Finally, change the Wireshark filter to tcp.port == 3389 to see RDP traffic. You will observe a non-stop, high-volume spam of traffic; this is because RDP is a constant live-streaming protocol, unlike the other "on-demand" protocols you tested .
-</p>
-<br />
