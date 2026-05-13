@@ -100,6 +100,8 @@ Finally, I set the Wireshark filter to **tcp.port == 3389** to inspect **RDP tra
 
 <img width="1453" height="849" alt="image" src="https://github.com/user-attachments/assets/207d1a8d-a3d5-4635-8615-99d8e3423f57" />
 
+---
+
 ### Technical Skills Highlighted
 
 **Network Security**: Implementation of stateful firewall rules via Azure NSGs.
