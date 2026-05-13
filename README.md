@@ -11,7 +11,7 @@ In this lab, I architected a secure cloud network environment in **Microsoft Azu
 ### Environments and Technologies Used
 
 - **Microsoft Azure** *(Virtual Machines, Virtual Networks, NSGs)*
-- **Remote Desktop (RDP)**
+- **Remote Desktop Protocol (RDP)**
 - **Various Command-Line Tools** *(Ping, SSH, NSLookup, IPConfig)*
 - **Various Network Protocols** *(SSH, RDH, DNS, HTTP/S, ICMP)*
 - **Wireshark** *(Protocol Analyzer)*
@@ -40,8 +40,6 @@ I created a new **Resource Group** and deployed a Windows 10 VM, allowing it to 
   
 <img width="1592" height="355" alt="image" src="https://github.com/user-attachments/assets/4cfec81a-af7e-4c99-8d47-bad00a06184f" />
 
-
-
 ---
 
 **Step 2**: **Observe ICMP Traffic**
@@ -56,9 +54,7 @@ I used Remote Desktop to connect to the Windows 10 VM via its public IP address.
   
 <img width="1601" height="881" alt="image" src="https://github.com/user-attachments/assets/9fb8d012-8bf5-470e-8cc0-26a448c3a22b" />
 
-
 ---
-
 
 **Step 3**: **Configure Network Security Group (Firewall)**
 
@@ -76,24 +72,34 @@ I started a continuous ping (`ping -t`) from the Windows VM to the Ubuntu VM. In
 
 <img width="1451" height="807" alt="image" src="https://github.com/user-attachments/assets/c8beede4-1fd1-436e-b0fe-f075d52e0274" />
 
-
 ---
 
 **Step 4**: **Inspect Other Network Protocols**
 
 I used Wireshark filters to observe the unique behaviors of several other protocols:
 
-* SSH: Filtered for ssh while logging into the Ubuntu VM from the Windows command line (`ssh labuser@private_ip`) to observe encrypted traffic.
+* SSH: Filtered for ssh while logging into the Ubuntu VM from the Windows command line (`ssh labuser @private_ip`) to observe encrypted traffic.
+
+<img width="1455" height="840" alt="image" src="https://github.com/user-attachments/assets/5aeb6a51-a96e-4aa5-a04a-e5a62c79ffbb" />
+
 
 * DHCP: Filtered for dhcp and ran `ipconfig /renew` in an admin PowerShell to observe the DHCP request and acknowledgment process.
 
+<img width="1440" height="814" alt="image" src="https://github.com/user-attachments/assets/bae7761d-8a0b-4aec-a9a1-db3cdacac69b" />
+
+
 * DNS: Filtered for dns and used `nslookup google.com` to see the specific DNS query and response packets.
+
+<img width="1453" height="849" alt="image" src="https://github.com/user-attachments/assets/8f2405bc-cdb1-4a31-a991-c8b7b58da9fb" />
 
 ---
 
 **Step 5**: **Observe RDP Traffic**
 
 Finally, I set the Wireshark filter to **tcp.port == 3389** to inspect **RDP traffic**. I observed a non-stop, high-volume stream of traffic; this is because RDP acts as a constant live-stream between computers, unlike the other "on-demand" protocols tested.
+
+<img width="1453" height="849" alt="image" src="https://github.com/user-attachments/assets/207d1a8d-a3d5-4635-8615-99d8e3423f57" />
+
 
 
 
