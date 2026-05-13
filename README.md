@@ -103,8 +103,11 @@ Finally, I set the Wireshark filter to **tcp.port == 3389** to inspect **RDP tra
 ### Technical Skills Highlighted
 
 **Network Security**: Implementation of stateful firewall rules via Azure NSGs.
+
 **Traffic Analysis**: Real-time packet capture and protocol identification using Wireshark.
+
 **Protocol Knowledge**: Deep understanding of the OSI model, specifically Layers 3, 4, and 7.
+
 **Cloud Infrastructure**: Managing interconnected resources within an Azure Virtual Network.
 
 
