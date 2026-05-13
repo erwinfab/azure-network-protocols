@@ -27,14 +27,17 @@ In this lab, I architected a secure cloud network environment in **Microsoft Azu
 I created a new **Resource Group** and deployed a Windows 10 VM, allowing it to create a new **Virtual Network (VNet)**. Next, I created an Ubuntu Linux VM, ensuring it was placed in the same Resource Group and VNet so both machines could communicate on the same private network.
 
 * Resource group created.
+  
 <img width="1592" height="319" alt="image" src="https://github.com/user-attachments/assets/0a8094be-8a95-4c71-af9f-e37427fce822" />
 
 
 * Created a VNet.
+  
 <img width="1569" height="845" alt="image" src="https://github.com/user-attachments/assets/20e4f3fd-744d-4dcb-918e-64502dd03749" />
 
 
 * Windows and Linux VM in the same Resource Group.
+  
 <img width="1592" height="355" alt="image" src="https://github.com/user-attachments/assets/4cfec81a-af7e-4c99-8d47-bad00a06184f" />
 
 
@@ -46,9 +49,11 @@ I created a new **Resource Group** and deployed a Windows 10 VM, allowing it to 
 I used Remote Desktop to connect to the Windows 10 VM via its public IP address. Inside the VM, I installed and opened **Wireshark**, started a packet capture, and set the display filter to **icmp**. I then opened the command line and pinged the private IP address of the Ubuntu VM, observing the live ping requests and replies in Wireshark.
 
 * Wireshark installation on Windows 10 VM.
+  
 <img width="1001" height="814" alt="image" src="https://github.com/user-attachments/assets/20afaa47-3eed-4bfb-bfc8-0c085eaa8e2e" />
 
-* Set ICMP distplay filter and pinged Ubuntu VM private IP address.
+* Set ICMP display filter and pinged Ubuntu VM private IP address.
+  
 <img width="1601" height="881" alt="image" src="https://github.com/user-attachments/assets/9fb8d012-8bf5-470e-8cc0-26a448c3a22b" />
 
 
@@ -60,13 +65,17 @@ I used Remote Desktop to connect to the Windows 10 VM via its public IP address.
 I started a continuous ping (`ping -t`) from the Windows VM to the Ubuntu VM. In the Azure portal, I located the **Network Security Group (NSG)** for the Ubuntu VM and added an inbound security rule to Deny all ICMP traffic. I observed in both the command line and Wireshark that the pings immediately began to fail with "Request timed out". After deleting the deny rule, the ping packets immediately began succeeding again.
 
 * Used command "ping -t" for a continous Ubuntu VM ping.
+
 <img width="1596" height="880" alt="image" src="https://github.com/user-attachments/assets/d78f7509-68fa-4d71-8fd6-a0b37f63cc61" />
 
 * Added an inbound security rule to Deny all ICMP traffic.
+
 <img width="1438" height="522" alt="image" src="https://github.com/user-attachments/assets/11571774-a04e-483f-95c5-421d5b64e9c7" />
 
 * Pings "Request timed out" after inbound security rule.
+
 <img width="1451" height="807" alt="image" src="https://github.com/user-attachments/assets/c8beede4-1fd1-436e-b0fe-f075d52e0274" />
+
 
 ---
 
