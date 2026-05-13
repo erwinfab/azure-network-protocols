@@ -59,6 +59,8 @@ I started a continuous ping (`ping -t`) from the Windows VM to the Ubuntu VM. In
 
 <img width="1596" height="880" alt="image" src="https://github.com/user-attachments/assets/d78f7509-68fa-4d71-8fd6-a0b37f63cc61" />
 
+<img width="1438" height="522" alt="image" src="https://github.com/user-attachments/assets/11571774-a04e-483f-95c5-421d5b64e9c7" />
+
 
 ---
 
